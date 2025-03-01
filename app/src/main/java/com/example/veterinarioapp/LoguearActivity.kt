@@ -1,4 +1,4 @@
-package com.example.ej4room
+package com.example.veterinarioapp
 
 import android.content.Context
 import android.content.Intent
@@ -9,9 +9,9 @@ import android.widget.Toast
 import android.widget.ViewSwitcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.ej4room.Entity.UsuarioEntity
-import com.example.ej4room.data.Aplicacion
-import com.example.ej4room.databinding.ActivityLoginBinding
+import com.example.veterinarioapp.Entity.UsuarioEntity
+import com.example.veterinarioapp.data.Aplicacion
+import com.example.veterinarioapp.databinding.ActivityLoginBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

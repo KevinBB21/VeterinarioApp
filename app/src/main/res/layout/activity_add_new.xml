@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AnadirNoticiaActivity">
+    tools:context=".AnadirReviewActivity">
 
     <!-- Título -->
     <TextView
@@ -91,7 +91,7 @@
         android:id="@+id/imagenLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/insertar_enlace_noticia"
+        android:text="@string/insertar_enlace_review"
         android:textSize="16sp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
@@ -112,12 +112,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Enlace de la Noticia -->
+    <!-- Enlace de la Review -->
     <TextView
         android:id="@+id/enlaceLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/insertar_enlace_noticia"
+        android:text="@string/insertar_enlace_review"
         android:textSize="16sp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
@@ -130,7 +130,7 @@
         android:id="@+id/insertarEnlace"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/url_noticia"
+        android:hint="@string/url_review"
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"

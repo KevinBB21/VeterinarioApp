@@ -54,7 +54,7 @@
                         android:id="@+id/tvTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Titulo de la Noticia"
+                        android:text="Titulo de la Review"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/black"
@@ -68,7 +68,7 @@
                         android:id="@+id/tvDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Descripción de la noticia."
+                        android:text="Descripción de la review."
                         android:textSize="14sp"
                         android:textColor="@android:color/darker_gray"
                         android:ellipsize="end"
@@ -98,7 +98,7 @@
                 android:layout_gravity="top|end"
                 android:layout_margin="8dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_unlike"
+                android:src="@drawable/ic_unlike_star"
                 android:contentDescription="@string/like_button"/>
         </FrameLayout>
 
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="10dp"
-            android:text="Abrir Noticia"
+            android:text="Abrir Review"
             android:textSize="16sp"
             android:backgroundTint="@color/boton"
             android:textColor="@android:color/white"/>

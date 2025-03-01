@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.ej4room"
+    namespace = "com.example.veterinarioapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.ej4room"
+        applicationId = "com.example.veterinarioapp"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ej4room"
+rootProject.name = "veterinarioapp"
 include(":app")
  

@@ -13,16 +13,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ej4room"
+        android:theme="@style/Theme.veterinarioapp"
         tools:targetApi="31">
         <activity
-            android:name=".ActualizarNoticiaActivity"
+            android:name=".ActualizarReviewActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".AnadirNoticiaActivity"
+            android:name=".AnadirReviewActivity"
             android:exported="false" />
         <activity
             android:name=".LoguearActivity"

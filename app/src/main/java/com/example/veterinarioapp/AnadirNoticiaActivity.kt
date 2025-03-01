@@ -1,4 +1,4 @@
-package com.example.ej4room
+package com.example.veterinarioapp
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,14 +7,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
-import com.example.ej4room.Entity.NoticiaEntity
-import com.example.ej4room.Entity.UsuarioEntity
-import com.example.ej4room.data.Aplicacion
-import com.example.ej4room.databinding.ActivityAddNewBinding
+import com.example.veterinarioapp.Entity.ReviewEntity
+import com.example.veterinarioapp.Entity.UsuarioEntity
+import com.example.veterinarioapp.data.Aplicacion
+import com.example.veterinarioapp.databinding.ActivityAddNewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AnadirNoticiaActivity : AppCompatActivity() {
+class AnadirReviewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddNewBinding
 
     private  var usuario: UsuarioEntity? = null
@@ -34,30 +34,30 @@ class AnadirNoticiaActivity : AppCompatActivity() {
             val descripcion = binding.insertarResumen.text.toString()
             val fecha = binding.insertarFecha.text.toString()
             val imagenUrl = binding.insertarImagen.text.toString()
-            val noticiaUrl = binding.insertarEnlace.text.toString()
+            val reviewUrl = binding.insertarEnlace.text.toString()
 
-            val noticia = NoticiaEntity(
+            val review = ReviewEntity(
                 titulo = titulo,
                 descripcion = descripcion,
                 fecha = fecha,
                 imagenUrl = imagenUrl,
-                noticiaUrl = noticiaUrl)
-            guardarDatos(noticia)
+                reviewUrl = reviewUrl)
+            guardarDatos(review)
 
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("Usuario", usuario)
             startActivity(intent)
 
-            Toast.makeText(this, "Noticia guardada", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Review guardada", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun guardarDatos(noticiaEntity: NoticiaEntity) {
+    private fun guardarDatos(reviewEntity: ReviewEntity) {
         lifecycleScope.launch(Dispatchers.IO) {
             Aplicacion
                 .baseDeDatos
-                .noticiaDao()
-                .agregarNoticia(noticiaEntity)
+                .reviewDao()
+                .agregarReview(reviewEntity)
         }
     }
 }

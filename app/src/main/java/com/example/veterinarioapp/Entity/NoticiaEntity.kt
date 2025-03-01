@@ -1,11 +1,11 @@
-package com.example.ej4room.Entity
+package com.example.veterinarioapp.Entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
-@Entity(tableName = "NoticiaEntity")
-data class NoticiaEntity(
+@Entity(tableName = "ReviewEntity")
+data class ReviewEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     var titulo: String = "",
@@ -13,5 +13,5 @@ data class NoticiaEntity(
     var fecha: String = "",
     var esFavorita: Boolean = false,
     val imagenUrl: String = "",
-    val noticiaUrl: String = ""
+    val reviewUrl: String = ""
 ): Serializable // El Serializable es para poder pasarlo entre activitys

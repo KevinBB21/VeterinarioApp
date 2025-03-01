@@ -1,4 +1,4 @@
-package com.example.ej4room
+package com.example.veterinarioapp
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ej4room.Entity.FavoritoEntity
-import com.example.ej4room.Entity.NoticiaEntity
-import com.example.ej4room.Entity.UsuarioEntity
-import com.example.ej4room.data.Aplicacion
-import com.example.ej4room.databinding.ActivityMainBinding
+import com.example.veterinarioapp.Entity.FavoritoEntity
+import com.example.veterinarioapp.Entity.ReviewEntity
+import com.example.veterinarioapp.Entity.UsuarioEntity
+import com.example.veterinarioapp.data.Aplicacion
+import com.example.veterinarioapp.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var layoutLineal: LinearLayoutManager
-    private lateinit var adaptadorNoticias: AdaptarNoticias
+    private lateinit var adaptadorReviews: AdaptarReviews
 
     private  var usuario: UsuarioEntity? = null
 
@@ -36,8 +36,8 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
         val botonFlotante = binding.addNew
         botonFlotante.setOnClickListener {
-            Toast.makeText(this, "Creando noticia", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, AnadirNoticiaActivity::class.java)
+            Toast.makeText(this, "Creando review", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AnadirReviewActivity::class.java)
             intent.putExtra("Usuario", usuario)
             startActivity(intent)
         }
@@ -46,24 +46,24 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     }
 
     private fun configurarRecyclerView() {
-        adaptadorNoticias = AdaptarNoticias(mutableListOf(), this)
+        adaptadorReviews = AdaptarReviews(mutableListOf(), this)
         layoutLineal = LinearLayoutManager(this)
 
-        obtenerNoticias()
+        obtenerReviews()
 
         binding.recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = layoutLineal
-            adapter = adaptadorNoticias
+            adapter = adaptadorReviews
         }
     }
 
-    private fun obtenerNoticias() {
+    private fun obtenerReviews() {
         lifecycleScope.launch(Dispatchers.IO) {
-            val noticias = Aplicacion
+            val reviews = Aplicacion
                 .baseDeDatos
-                .noticiaDao()
-                .obtenerTodasLasNoticias()
+                .reviewDao()
+                .obtenerTodasLasReviews()
 
             val favoritos = usuario?.let {
                 Aplicacion
@@ -72,32 +72,32 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                     .obtenerTodosLosFavoritos(it.id)
             }
 
-            noticias.forEach { noticia ->
+            reviews.forEach { review ->
                 if (favoritos != null) {
-                    noticia.esFavorita = favoritos.any { it.noticiaId == noticia.id }
+                    review.esFavorita = favoritos.any { it.reviewId == review.id }
                 }
             }
 
             withContext(Dispatchers.Main) {
-                adaptadorNoticias.establecerNoticias(noticias)
+                adaptadorReviews.establecerReviews(reviews)
             }
         }
     }
 
-    override fun alHacerClic(noticiaEntity: NoticiaEntity) {
-        val intent = Intent(this, ActualizarNoticiaActivity::class.java)
-        intent.putExtra("Noticia", noticiaEntity)
+    override fun alHacerClic(reviewEntity: ReviewEntity) {
+        val intent = Intent(this, ActualizarReviewActivity::class.java)
+        intent.putExtra("Review", reviewEntity)
         intent.putExtra("Usuario", usuario)
         startActivity(intent)
     }
 
-    override fun alDarleAFavorito(noticiaEntity: NoticiaEntity) {
-        noticiaEntity.esFavorita = !noticiaEntity.esFavorita
-        adaptadorNoticias.actualizar(noticiaEntity)
+    override fun alDarleAFavorito(reviewEntity: ReviewEntity) {
+        reviewEntity.esFavorita = !reviewEntity.esFavorita
+        adaptadorReviews.actualizar(reviewEntity)
         lifecycleScope.launch(Dispatchers.IO) {
             // Esto asignará -1 en caso de que usuario sea null. (No debería)
-            val favoritoEntity = FavoritoEntity(usuario?.id ?: -1, noticiaEntity.id)
-            if (noticiaEntity.esFavorita) {
+            val favoritoEntity = FavoritoEntity(usuario?.id ?: -1, reviewEntity.id)
+            if (reviewEntity.esFavorita) {
                 Aplicacion
                     .baseDeDatos
                     .favoritoDao()
@@ -110,18 +110,18 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             }
             Aplicacion
                 .baseDeDatos
-                .noticiaDao()
-                .actualizarNoticia(noticiaEntity)
+                .reviewDao()
+                .actualizarReview(reviewEntity)
         }
     }
 
-    override fun alEliminar(noticiaEntity: NoticiaEntity) {
-        adaptadorNoticias.eliminar(noticiaEntity)
+    override fun alEliminar(reviewEntity: ReviewEntity) {
+        adaptadorReviews.eliminar(reviewEntity)
         lifecycleScope.launch(Dispatchers.IO) {
             Aplicacion
                 .baseDeDatos
-                .noticiaDao()
-                .borrarNoticia(noticiaEntity)
+                .reviewDao()
+                .borrarReview(reviewEntity)
         }
     }
 }

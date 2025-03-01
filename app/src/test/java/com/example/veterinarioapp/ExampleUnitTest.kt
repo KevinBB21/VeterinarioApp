@@ -1,4 +1,4 @@
-package com.example.ej4room
+package com.example.veterinarioapp
 
 import org.junit.Test
 

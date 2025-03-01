@@ -1,4 +1,4 @@
-package com.example.ej4room
+package com.example.veterinarioapp
 
 import android.content.Context
 import android.content.Intent
@@ -10,13 +10,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.ej4room.Entity.NoticiaEntity
-import com.example.ej4room.databinding.ItemNewBinding
+import com.example.veterinarioapp.Entity.ReviewEntity
+import com.example.veterinarioapp.databinding.ItemNewBinding
 
-class AdaptarNoticias(
-    private var listaNoticias: MutableList<NoticiaEntity>,
+class AdaptarReviews(
+    private var listaReviews: MutableList<ReviewEntity>,
     private var listener: OnClickListener
-) : RecyclerView.Adapter<AdaptarNoticias.ViewHolder>() {
+) : RecyclerView.Adapter<AdaptarReviews.ViewHolder>() {
 
     private lateinit var contexto: Context
 
@@ -24,14 +24,14 @@ class AdaptarNoticias(
 
         val binding = ItemNewBinding.bind(view)
 
-        fun establecerListener(noticia: NoticiaEntity) {
+        fun establecerListener(review: ReviewEntity) {
             with(binding) {
-                root.setOnClickListener { listener.alHacerClic(noticia) }
+                root.setOnClickListener { listener.alHacerClic(review) }
 
-                btnLike.setOnClickListener { listener.alDarleAFavorito(noticia) }
+                btnLike.setOnClickListener { listener.alDarleAFavorito(review) }
 
                 root.setOnLongClickListener {
-                    listener.alEliminar(noticia)
+                    listener.alEliminar(review)
                     true
                 }
             }
@@ -44,24 +44,24 @@ class AdaptarNoticias(
         return ViewHolder(vista)
     }
 
-    override fun getItemCount(): Int = listaNoticias.size
+    override fun getItemCount(): Int = listaReviews.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val noticia = listaNoticias[position]
+        val review = listaReviews[position]
 
         with(holder) {
-            establecerListener(noticia)
+            establecerListener(review)
 
             with(binding) {
-                tvTitle.text = noticia.titulo
-                tvDescription.text = noticia.descripcion
-                tvDate.text = noticia.fecha
+                tvTitle.text = review.titulo
+                tvDescription.text = review.descripcion
+                tvDate.text = review.fecha
 
-                val icono = if (noticia.esFavorita) R.drawable.ic_like else R.drawable.ic_unlike
+                val icono = if (review.esFavorita) R.drawable.ic_like_star else R.drawable.ic_unlike_star
                 btnLike.setImageResource(icono)
 
                 btnOpenLink.setOnClickListener {
-                    val url = noticia.noticiaUrl
+                    val url = review.reviewUrl
                     try {
                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                         contexto.startActivity(intent)
@@ -71,7 +71,7 @@ class AdaptarNoticias(
                 }
 
                 Glide.with(binding.tvImage.context)
-                    .load(noticia.imagenUrl)
+                    .load(review.imagenUrl)
                     .error(R.drawable.ic_launcher_background)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .centerCrop()
@@ -80,30 +80,30 @@ class AdaptarNoticias(
         }
     }
 
-    fun agregar(noticia: NoticiaEntity) {
-        listaNoticias.add(noticia)
+    fun agregar(review: ReviewEntity) {
+        listaReviews.add(review)
         notifyDataSetChanged()
     }
 
-    fun establecerNoticias(noticias: MutableList<NoticiaEntity>) {
-        this.listaNoticias = noticias
+    fun establecerReviews(reviews: MutableList<ReviewEntity>) {
+        this.listaReviews = reviews
         notifyDataSetChanged()
     }
 
-    fun actualizar(noticia: NoticiaEntity) {
-        val indice = listaNoticias.indexOfFirst { it.id == noticia.id }
+    fun actualizar(review: ReviewEntity) {
+        val indice = listaReviews.indexOfFirst { it.id == review.id }
 
         if (indice != -1) {
-            listaNoticias[indice] = noticia
+            listaReviews[indice] = review
             notifyItemChanged(indice)
         }
     }
 
-    fun eliminar(noticia: NoticiaEntity) {
-        val indice = listaNoticias.indexOf(noticia)
+    fun eliminar(review: ReviewEntity) {
+        val indice = listaReviews.indexOf(review)
 
         if (indice != -1) {
-            listaNoticias.removeAt(indice)
+            listaReviews.removeAt(indice)
             notifyItemRemoved(indice)
         }
     }

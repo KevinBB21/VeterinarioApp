@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ej4Room</string>
+    <string name="app_name">VeterinarioApp</string>
     <string name="userName">NombreUsuario</string>
     <string name="userEmail">EmailUsuario</string>
     <string name="image_description">Imagen</string>
@@ -15,8 +15,8 @@
     <string name="bienvenido">Bienvenido</string>
     <string name="guardar">Guardar</string>
     <string name="fecha_dd_mm_aaaa">Fecha (dd/mm/aaaa)</string>
-    <string name="url_noticia">URL de la noticia</string>
-    <string name="insertar_enlace_noticia">Inserte el enlace de la noticia:</string>
+    <string name="url_review">URL de la review</string>
+    <string name="insertar_enlace_review">Inserte el enlace de la review:</string>
     <string name="url_imagen">URL de la imagen</string>
     <string name="registerTextQuestion">Sin cuenta? Regístrate</string>
     <string name="registerTitle">Registrarse</string>

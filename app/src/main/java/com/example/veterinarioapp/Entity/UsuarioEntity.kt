@@ -1,4 +1,4 @@
-package com.example.ej4room.Entity
+package com.example.veterinarioapp.Entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

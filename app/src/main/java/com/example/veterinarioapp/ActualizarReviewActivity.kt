@@ -1,19 +1,19 @@
-package com.example.ej4room
+package com.example.veterinarioapp
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
-import com.example.ej4room.Entity.NoticiaEntity
-import com.example.ej4room.Entity.UsuarioEntity
-import com.example.ej4room.data.Aplicacion
-import com.example.ej4room.databinding.ActivityActualizarNoticiaBinding
+import com.example.veterinarioapp.Entity.ReviewEntity
+import com.example.veterinarioapp.Entity.UsuarioEntity
+import com.example.veterinarioapp.data.Aplicacion
+import com.example.veterinarioapp.databinding.ActivityActualizarReviewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ActualizarNoticiaActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityActualizarNoticiaBinding
+class ActualizarReviewActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityActualizarReviewBinding
 
     private  var usuario: UsuarioEntity? = null
 
@@ -24,14 +24,14 @@ class ActualizarNoticiaActivity : AppCompatActivity() {
 
         usuario = intent.getSerializableExtra("Usuario") as? UsuarioEntity
 
-        binding = ActivityActualizarNoticiaBinding.inflate(layoutInflater)
+        binding = ActivityActualizarReviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val noticiaObtenida = intent.getSerializableExtra("Noticia") as NoticiaEntity
+        val reviewObtenida = intent.getSerializableExtra("Review") as ReviewEntity
 
-        val titulo: String = noticiaObtenida.titulo
-        val descripcion: String = noticiaObtenida.descripcion
-        val fecha: String = noticiaObtenida.fecha
+        val titulo: String = reviewObtenida.titulo
+        val descripcion: String = reviewObtenida.descripcion
+        val fecha: String = reviewObtenida.fecha
 
         val et_titulo = binding.insertarTitulo
         val et_descripcion = binding.insertarResumen
@@ -43,31 +43,31 @@ class ActualizarNoticiaActivity : AppCompatActivity() {
         et_fecha.setText(fecha)
 
         btn_actualizar.setOnClickListener {
-            val id = noticiaObtenida.id
-            val esFavorita = noticiaObtenida.esFavorita
-            val imagenUrl = noticiaObtenida.imagenUrl
-            val noticiaUrl = noticiaObtenida.noticiaUrl
-            val noticiaActualizada = NoticiaEntity(
+            val id = reviewObtenida.id
+            val esFavorita = reviewObtenida.esFavorita
+            val imagenUrl = reviewObtenida.imagenUrl
+            val reviewUrl = reviewObtenida.reviewUrl
+            val reviewActualizada = ReviewEntity(
                 id = id,
                 titulo = et_titulo.text.toString(),
                 descripcion = et_descripcion.text.toString(),
                 fecha = et_fecha.text.toString(),
                 esFavorita = esFavorita,
                 imagenUrl = imagenUrl,
-                noticiaUrl = noticiaUrl)
-            guardarNoticia(noticiaActualizada)
+                reviewUrl = reviewUrl)
+            guardarReview(reviewActualizada)
             intent = Intent(this, MainActivity::class.java)
             intent.putExtra("Usuario", usuario)
             startActivity(intent)
         }
     }
 
-    private fun guardarNoticia(noticiaActualizada: NoticiaEntity) {
+    private fun guardarReview(reviewActualizada: ReviewEntity) {
         lifecycleScope.launch(Dispatchers.IO) {
             Aplicacion
                 .baseDeDatos
-                .noticiaDao()
-                .actualizarNoticia(noticiaActualizada)
+                .reviewDao()
+                .actualizarReview(reviewActualizada)
         }
     }
 }

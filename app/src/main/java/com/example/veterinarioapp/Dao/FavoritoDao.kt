@@ -1,11 +1,10 @@
-package com.example.ej4room.Dao
+package com.example.veterinarioapp.Dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Update
-import com.example.ej4room.Entity.FavoritoEntity
+import com.example.veterinarioapp.Entity.FavoritoEntity
 
 @Dao
 interface FavoritoDao {
