@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Ej4Room</string>
+    <string name="userName">NombreUsuario</string>
+    <string name="userEmail">EmailUsuario</string>
+    <string name="image_description">Imagen</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="resumen">Resumen</string>
+    <string name="insertar_resumen">Inserte un resumen:</string>
+    <string name="emailText">Correo electrónico</string>
+    <string name="userPassword">ContrasenaUsuario</string>
+    <string name="remember">Recordar</string>
+    <string name="titulo">Título</string>
+    <string name="passwordText">Contraseña</string>
+    <string name="description1">Inicia sesión para continuar</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="guardar">Guardar</string>
+    <string name="fecha_dd_mm_aaaa">Fecha (dd/mm/aaaa)</string>
+    <string name="url_noticia">URL de la noticia</string>
+    <string name="insertar_enlace_noticia">Inserte el enlace de la noticia:</string>
+    <string name="url_imagen">URL de la imagen</string>
+    <string name="registerTextQuestion">Sin cuenta? Regístrate</string>
+    <string name="registerTitle">Registrarse</string>
+    <string name="subtitle2">Regístrate para continuar</string>
+    <string name="nameText">Nombre</string>
+    <string name="registerText">Registrarse</string>
+    <string name="rememberText">Recordarme</string>
+    <string name="loginText">Iniciar Sesión</string>
+    <string name="like_button">Botón de like\n</string>
+    <string name="inserte_la_fecha">Inserte la fecha:</string>
+    <string name="insertar_titulo">Inserte título:</string>
+    <string name="insertar_imagen">Inserte la URL de la imagen:</string>
+</resources>
