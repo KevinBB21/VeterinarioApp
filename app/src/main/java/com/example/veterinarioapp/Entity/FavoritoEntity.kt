@@ -9,9 +9,9 @@ import androidx.room.ForeignKey.Companion.CASCADE
     primaryKeys = ["usuarioId", "reviewId"],
     foreignKeys = [
         ForeignKey(entity = UsuarioEntity::class, parentColumns = ["id"], childColumns = ["usuarioId"],
-                onDelete = CASCADE), // Esto borra los favoritos si se borra la review
+                onDelete = CASCADE),
         ForeignKey(entity = ReviewEntity::class, parentColumns = ["id"], childColumns = ["reviewId"],
-                onDelete = CASCADE) // Esto borra los favoritos si se borra la review
+                onDelete = CASCADE)
     ]
 )
 data class FavoritoEntity(

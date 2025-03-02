@@ -14,4 +14,4 @@ data class ReviewEntity(
     var esFavorita: Boolean = false,
     val imagenUrl: String = "",
     val reviewUrl: String = ""
-): Serializable // El Serializable es para poder pasarlo entre activitys
+): Serializable

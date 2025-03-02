@@ -7,29 +7,38 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/fondo1"
+        android:background="@drawable/vetphoto"
         tools:context=".LoguearActivity">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logovet"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="24dp"
-            app:cardCornerRadius="30dp"
-            app:cardElevation="12dp"
-            app:cardBackgroundColor="#FAFAFA"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#F9F9F9"
+            app:layout_constraintTop_toBottomOf="@id/logo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintEnd_toEndOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="40dp"
+                android:padding="32dp"
                 android:gravity="center_horizontal">
 
                 <TextView
@@ -37,71 +46,69 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bienvenido"
-                    android:textSize="32sp"
-                    android:textColor="#222222"
+                    android:textSize="22sp"
+                    android:textColor="@color/background_light"
                     android:textStyle="bold"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_marginBottom="10dp"/>
 
-                <TextView
-                    android:id="@+id/tvSubtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/description1"
-                    android:textSize="18sp"
-                    android:textColor="#555555"
-                    android:layout_marginBottom="26dp" />
-
-                <EditText
-                    android:id="@+id/etEmail"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/emailText"
-                    android:textColorHint="#AAAAAA"
-                    android:padding="18dp"
-                    android:layout_marginBottom="18dp" />
+                    android:layout_marginBottom="16dp">
 
-                <EditText
-                    android:id="@+id/etPassword"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="14dp"
+                        android:textColorHint="@color/background_light"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/passwordText"
-                    android:textColorHint="#AAAAAA"
-                    android:padding="18dp"
-                    android:layout_marginBottom="18dp" />
+                    android:layout_marginBottom="16dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="start"
-                    android:layout_marginBottom="18dp">
-
-                    <CheckBox
-                        android:id="@+id/cbRememberMe"
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/rememberText"
-                        android:textColor="#555555" />
-                </LinearLayout>
+                        android:padding="14dp"
+                        android:textColorHint="@color/background_light"
+                        android:inputType="textPassword"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <Button
+                <CheckBox
+                    android:id="@+id/cbRememberMe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rememberText"
+                    android:textColor="#555555"
+                    android:layout_marginBottom="16dp"/>
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/loginText"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#FF5722"
-                    android:paddingVertical="14dp"
-                    android:layout_marginBottom="18dp" />
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/boton"
+                    android:textColor="@android:color/white"
+                    app:cornerRadius="50dp"
+                    android:layout_marginTop="12dp"
+                    android:paddingVertical="12dp"/>
 
                 <TextView
                     android:id="@+id/tvRegister"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/registerTextQuestion"
-                    android:textColor="#FF5722"
-                    android:textSize="16sp"
-                    android:gravity="center" />
+                    android:textColor="@color/boton"
+                    android:textSize="15sp"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -111,62 +118,73 @@
         android:layout_height="match_parent"
         android:background="#FFFFFF">
 
-
-    <androidx.cardview.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="24dp"
-            app:cardCornerRadius="30dp"
-            app:cardElevation="12dp"
-            app:cardBackgroundColor="#FAFAFA"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="100dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#F9F9F9"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintEnd_toEndOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="40dp"
+                android:padding="32dp"
                 android:gravity="center_horizontal">
 
-                <EditText
-                    android:id="@+id/etRegisterName"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/nameText"
-                    android:textColorHint="#AAAAAA"
-                    android:padding="18dp"
-                    android:layout_marginBottom="18dp" />
+                    android:layout_marginBottom="16dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRegisterName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="14dp"
+                        android:textColorHint="#777777"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/etRegisterEmail"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/emailText"
-                    android:textColorHint="#AAAAAA"
-                    android:padding="18dp"
-                    android:layout_marginBottom="18dp" />
+                    android:layout_marginBottom="16dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRegisterEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="14dp"
+                        android:textColorHint="#777777"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/etRegisterPassword"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/passwordText"
-                    android:textColorHint="#AAAAAA"
-                    android:padding="18dp"
-                    android:layout_marginBottom="18dp" />
+                    android:layout_marginBottom="16dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRegisterPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="14dp"
+                        android:textColorHint="#777777"
+                        android:inputType="textPassword"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnRegisterLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/registerText"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#FF5722"
-                    android:paddingVertical="14dp"
-                    android:layout_marginBottom="18dp" />
+                    android:backgroundTint="#FF7043"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="12dp"
+                    android:paddingVertical="12dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
