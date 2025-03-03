@@ -24,9 +24,11 @@
         <activity
             android:name=".AnadirReviewActivity"
             android:exported="false" />
+        <activity android:name=".AjustesActivity"/>
         <activity
             android:name=".LoguearActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

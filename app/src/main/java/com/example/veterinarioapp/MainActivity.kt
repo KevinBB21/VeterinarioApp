@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
     private  var usuario: UsuarioEntity? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         // Forzamos el modo claro para toda la aplicación.
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -42,8 +43,11 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             startActivity(intent)
         }
 
+
         configurarRecyclerView()
     }
+
+
 
     private fun configurarRecyclerView() {
         adaptadorReviews = AdaptarReviews(mutableListOf(), this)

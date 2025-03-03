@@ -4,16 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.TextUtils.replace
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import android.widget.ViewSwitcher
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.add
 import androidx.lifecycle.lifecycleScope
 import com.example.veterinarioapp.Entity.UsuarioEntity
 import com.example.veterinarioapp.data.Aplicacion
 import com.example.veterinarioapp.databinding.ActivityLoginBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.fragment.app.commit
 import kotlinx.coroutines.withContext
 
 class LoguearActivity : AppCompatActivity() {
@@ -31,7 +34,10 @@ class LoguearActivity : AppCompatActivity() {
         cargarLogicaRegistro(preferencias, cambiadorVistas)
 
         cargarAnimacionTransicion(cambiadorVistas)
+
+
     }
+
 
     private fun LoguearActivity.cargarLogicaInicioSesion(preferencias: SharedPreferences, cambiadorVistas: ViewSwitcher) {
         val etEmail = binding.etEmail
