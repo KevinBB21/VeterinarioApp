@@ -42,6 +42,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.recyclerview)
     val roomVersion = "2.6.0"
 
     implementation("androidx.core:core-ktx:1.12.0")

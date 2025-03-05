@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_emergencia"
+        android:icon="@drawable/ic_emergency"
+        android:title="Emergencia"/>
+    <item
+        android:id="@+id/nav_adopcion"
+        android:icon="@drawable/ic_adoption"
+        android:title="Adopción"/>
+</menu>
