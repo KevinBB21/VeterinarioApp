@@ -28,7 +28,6 @@
             android:padding="32dp"
             android:gravity="center_horizontal">
 
-            <!-- Título -->
             <TextView
                 android:id="@+id/tituloLabel"
                 android:layout_width="match_parent"

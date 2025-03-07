@@ -18,7 +18,6 @@ class ActualizarReviewActivity : AppCompatActivity() {
     private  var usuario: UsuarioEntity? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Forzamos el modo claro para toda la aplicación.
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
 

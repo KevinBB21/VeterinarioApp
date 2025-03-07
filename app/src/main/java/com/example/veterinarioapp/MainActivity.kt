@@ -14,6 +14,7 @@ import com.example.veterinarioapp.Entity.FavoritoEntity
 import com.example.veterinarioapp.Entity.ReviewEntity
 import com.example.veterinarioapp.Entity.UsuarioEntity
 import com.example.veterinarioapp.data.Aplicacion
+import com.example.veterinarioapp.databinding.ActivityAddNewBinding
 import com.example.veterinarioapp.databinding.ActivityMainBinding
 import com.example.veterinarioapp.fragments.AdopcionFragment
 import com.example.veterinarioapp.fragments.EmergenciaFragment
@@ -44,13 +45,17 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         configurarRecyclerView()
         configurarMusica()
 
-        // Cargar fragmento inicial (EmergenciaFragment por defecto)
         loadFragment(EmergenciaFragment())
+
+        val botonFlotante = binding.addNew
+        botonFlotante.setOnClickListener {
+            Toast.makeText(this, "Creando noticia", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AnadirReviewActivity::class.java)
+            intent.putExtra("Usuario", usuario)
+            startActivity(intent)
+        }
     }
 
-    /**
-     * Configura el BottomNavigationView y su listener de clics
-     */
     private fun configurarBottomNavigation() {
         val bottomNavigationView = binding.bottomNavigationView
 
@@ -63,18 +68,14 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         }
     }
 
-    /**
-     * Carga un Fragment en el contenedor principal
-     */
+
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
             .commit()
     }
 
-    /**
-     * Configura y muestra las reviews en un RecyclerView
-     */
+
     private fun configurarRecyclerView() {
         adaptadorReviews = AdaptarReviews(mutableListOf(), this)
         layoutLineal = LinearLayoutManager(this)
@@ -88,9 +89,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         }
     }
 
-    /**
-     * Obtiene las reviews de la base de datos
-     */
+
     private fun obtenerReviews() {
         lifecycleScope.launch(Dispatchers.IO) {
             val reviews = Aplicacion.baseDeDatos.reviewDao().obtenerTodasLasReviews()
@@ -110,9 +109,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         }
     }
 
-    /**
-     * Configura la reproducción de música en segundo plano
-     */
+
     private fun configurarMusica() {
         mediaPlayer = MediaPlayer.create(this, R.raw.alesso)
         mediaPlayer.isLooping = true
@@ -123,6 +120,12 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         mediaPlayer.seekTo(savedPosition)
         mediaPlayer.start()
     }
+
+    private fun AddNew() {
+
+    }
+
+
 
     override fun onPause() {
         super.onPause()
@@ -146,7 +149,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         mediaPlayer.release()
     }
 
-    // Métodos de la interfaz OnClickListener para manejar interacciones con reviews
+
     override fun alHacerClic(reviewEntity: ReviewEntity) {
         val intent = Intent(this, ActualizarReviewActivity::class.java)
         intent.putExtra("Review", reviewEntity)

@@ -11,4 +11,4 @@ data class UsuarioEntity(
     val email: String? = "",
     val nombre: String? = "",
     val contrasena: String? = ""
-) : Serializable // El Serializable es para poder pasarlo entre activitys
+) : Serializable

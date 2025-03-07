@@ -65,7 +65,6 @@ class LoguearActivity : AppCompatActivity() {
         }
 
         btnIniciarSesion.setOnClickListener {
-            // Lo metemos en una corrutina porque sino no podríamos leer si existe el usuario
             lifecycleScope.launch {
                 val usuario = leerUsuario(etEmail.text.toString(), etContrasena.text.toString())
 

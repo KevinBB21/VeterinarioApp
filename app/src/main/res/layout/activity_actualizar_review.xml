@@ -10,7 +10,6 @@
     tools:context=".AnadirReviewActivity"
     android:background="@color/background_light">
 
-    <!-- CardView para encapsular los campos -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
@@ -29,7 +28,6 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Título -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -41,7 +39,7 @@
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Resumen -->
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,7 +52,6 @@
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Fecha -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,7 +67,6 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Botón Guardar -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGuardar"
         android:layout_width="0dp"
